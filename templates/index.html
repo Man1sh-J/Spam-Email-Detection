@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Email Detector</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            color: #1e3a8a;
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .spam {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .ham {
+            background: #dcfce7;
+            color: #15803d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Spam Email Detector</h1>
+
+        <p>
+            Detect spam messages using Machine Learning
+            and Natural Language Processing.
+        </p>
+
+        <form method="POST">
+            <textarea
+                name="message"
+                placeholder="Enter your message here..."
+                required>{{ message }}</textarea>
+
+            <button type="submit">
+                Check Spam
+            </button>
+        </form>
+
+        {% if prediction %}
+        <div class="result {{ 'spam' if prediction == 'Spam Message!' else 'ham' }}">
+            {{ prediction }}
+        </div>
+        {% endif %}
+
+        <p style="font-size: 12px; margin-top: 25px;">
+            Built with Python, Flask and Machine Learning.
+            Predictions are not guaranteed to be correct.
+        </p>
+    </div>
+</body>
+</html>
